@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./calculator-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha512-9BwLAVqqt6oFdXohPLuNHxhx36BVj5uGSGmizkmGkgl3uMSgNalKc/smum+GJU/TTP0jy0+ruwC3xNAk3F759A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <nav>
+        <div class="logo-wrapper">
+            <img src="./images/1.png" alt="">
+        </div>
+        
+        <div class="nav-wrapper">
+            <ul>
+                <li class="nav-el">
+                    <a href="./index.html">Home</a>
+                </li>
+                <li class="nav-el">
+                    <a href="./calculator.html">Calculator</a>
+                </li>
+                <li class="nav-el">
+                    <a href="#">About Us</a>
+                </li>
+                <li class="nav-el">
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section>  
+        <h1>The Smart Savings Calculator</h1>  
+        <div class="income">
+            <h3>Gross Income</h3>
+            <div class="input-wrapper">
+                <h5>Income (before tax) </h5>
+                <input type="number" name="income">
+            </div>
+        </div>
+        
+        <div class="taxes">
+            <h3>Taxes</h3>
+            <div class="input-wrapper"  id="tax-year">
+                <h5>Tax Year </h5>
+                <input type="number" name="tax-year">
+            </div>
+            <div class="input-wrapper" id="age">  
+                <h5>Age </h5>
+                <input type="number" name="age">
+            </div>                
+            <div class="input-wrapper" id="student-loan"> 
+                <h5>Student Loan Plan </h5> 
+                <input type="number" name="student-loan">
+            </div>
+            <div class="input-wrapper" id="pension">  
+                <h5>Pension Contribution </h5>
+                <input type="number" name="pension">
+            </div>
+
+
+        </div>
+        <div class="expenses">
+            <h3>Expenses</h3>
+            
+            <div class="input-wrapper" id="housing">
+                <h5>Housing (Rent, Mortgage, Bills etc) </h5>  
+                <input type="number" name="housing">
+            </div>
+            <div class="input-wrapper" id="transport">  
+                <h5>Transport </h5>
+                <input type="number" name="transport">
+            </div>
+            <div class="input-wrapper" id="essentials"> 
+                <h5>Essentials (Food, Drink etc) </h5> 
+                <input type="number" name="essentials">
+            </div>
+            <div class="input-wrapper" id="fun">  
+                <h5>Fun (Restaurants, Activities etc) </h5>
+                <input type="number" name="fun">
+            </div>
+            <div class="input-wrapper" id="other">  
+                <h5>Other </h5>
+                <input type="number" name="other">
+            </div>
+        </div>
+        <div>
+            <button>CALCULATE</button>
+        </div>
+    </section>
+    <footer>
+        
+    </footer>
+    <script src="./app.js"></script>
+
+</body>
+</html>

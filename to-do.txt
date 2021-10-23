@@ -1,0 +1,6 @@
+To Do:
+
+review slider
+links to new pages
+footer
+hamburger menu for mobile
