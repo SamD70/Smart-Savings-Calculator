@@ -11,7 +11,35 @@ const otherInp = document.querySelector('input[name=other]');
 
 const calculateBtn = document.querySelector('button');
 
+
+//EVENT LISTENERS   
 calculateBtn.addEventListener('click', taxesCalc); //need to change to savings calc eventually
+calculateBtn.addEventListener('click', loanCalc); 
+
+
+//sets loan type initially to none
+var loanType = document.getElementById("student-loan-list").value;
+//this function changes loan type after 'onchange' event 
+function whichLoan(){
+    loanType = document.getElementById("student-loan-list").value;
+}
+
+function loanCalc(){
+    let incLoan = false;
+    let income = incomeInp.value;
+
+    if (loanType == document.querySelector('option[value=plan1]')){
+        let incLoan =  true//((income/12)-1657)*0.09;
+    }
+    if (loanType == 'plan2'){
+        let incLoan = true //((income/12)-2274)*0.09;
+    }
+    else{
+        //incLoan = null //((income/12)-2274)*0.09;
+
+    }
+    console.log(incLoan);
+}
 
 //Fn to find Income Tax paid
 function incTaxFn(a){
@@ -43,9 +71,10 @@ function incNiFn(a){
 };
 
 function taxesCalc(){
-    let income = incomeInp.value;
-    let age = ageInp.value;
     
+    let age = ageInp.value;
+    let income = incomeInp.value;
+
     let incTax = incTaxFn(income);
     let incNi = 0;
 
@@ -58,8 +87,6 @@ function taxesCalc(){
     }
     let afterTax = income - incNi - incTax;
     console.log(afterTax);
+
 };
 
-function savingsCalc(){
-    
-};
