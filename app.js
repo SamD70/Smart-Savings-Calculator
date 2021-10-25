@@ -1,81 +1,63 @@
-const income = document.querySelector('input[name=income]');
-const taxYear = document.querySelector('input[name=tax-year]');
-const age = document.querySelector('input[name=age]');
-const studentLoan = document.querySelector('input[name=student-loan]');
-const pension = document.querySelector('input[name=pension]');
-const housing = document.querySelector('input[name=housing]');
-const transport = document.querySelector('input[name=transport]');
-const essentials = document.querySelector('input[name=essentials]');
-const fun = document.querySelector('input[name=fun]');
-const other = document.querySelector('input[name=other]');
+const incomeInp = document.querySelector('input[name=income]');
+const taxYearInp = document.querySelector('input[name=tax-year]');
+const ageInp = document.querySelector('input[name=age]');
+const studentLoanInp = document.querySelector('input[name=student-loan]');
+const pensionInp = document.querySelector('input[name=pension]');
+const housingInp = document.querySelector('input[name=housing]');
+const transportInp = document.querySelector('input[name=transport]');
+const essentialsInp = document.querySelector('input[name=essentials]');
+const funInp = document.querySelector('input[name=fun]');
+const otherInp = document.querySelector('input[name=other]');
 
 const calculateBtn = document.querySelector('button');
 
 calculateBtn.addEventListener('click', taxesCalc); //need to change to savings calc eventually
 
-//This section is calculating purely gov tax from income
-//Functions specify which tax bracket someone is in
-function topPer(a){
-    const extraTop = (a - 150000)-((a - 150000)*0.45);
-    return extraTop + 102567.4;
-}
-
-function midPer(a){
-    const extraTop = (a - 50271)-((a - 50271)*0.4);
-    return extraTop + 42731;
-}
-
-function lowPer(a){
-    const extraTop = (a - 12751)-((a - 12751)*0.2);
-    return extraTop + 12750;
-}
-
-function niFunc(a){
-    weekInc = a/52;
-    if (weekInc<184.01){
-        return a;
+//Fn to find Income Tax paid
+function incTaxFn(a){
+    if (a > 150000){
+        return 47431.4 + ((a -150000)*0.45);
     }
-    else if (weekInc<967){
-        newA = 52*(weekInc - ((weekInc-184)*0.12));
-        return newA;
+    else if(a > 50270){
+        return 7539.8 + ((a - 50270)*0.4);
+    }
+    else if(a > 12570){
+        return (a - 12570)*0.2;
+    }
+    else {
+        return 0;
+    }
+};
+//Fn to find National Insurance paid
+function incNiFn(a){
+    let b = a/52;
+    if (b > 967){
+        return 52*(93.96 + ((b - 967)*0.02));
+    }
+    else if(b > 184){
+        return 52*((b - 184)*0.12);
     }
     else{
-        newA = 52*((weekInc-967)-((weekInc-967)*0.02)+873.04);
-        return newA;
+        return 0;
     }
-}
-
+};
 
 function taxesCalc(){
-    var afterTax = 0;
-    var afterTaxNi = 0;
-    incomeInp = income.value;
-    ageInp = age.value;
+    let income = incomeInp.value;
+    let age = ageInp.value;
     
-    //Statements for determining tax bracket
-    if (incomeInp>150000){
-        afterTax = topPer(incomeInp);
-    }
-    else if (incomeInp>50271){
-        afterTax = midPer(incomeInp);
-    }
-    else if (incomeInp>12751){
-        afterTax = lowPer(incomeInp);
-    }
-    else{
-        afterTax = incomeInp;
-    }
-    
-    //Statements for determing NI bracket
-    if (ageInp>65){
-        afterTaxNi = afterTax;
-    }
-    else{
-        afterTaxNi = niFunc(afterTax);
-    }
+    let incTax = incTaxFn(income);
+    let incNi = 0;
 
-    
-    console.log(afterTaxNi);
+    //NI not paid over 65
+    if (age>65){
+        incNi = 0;
+    }
+    else{
+        incNi = incNiFn(income);
+    }
+    let afterTax = income - incNi - incTax;
+    console.log(afterTax);
 };
 
 function savingsCalc(){
