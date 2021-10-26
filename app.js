@@ -14,31 +14,8 @@ const calculateBtn = document.querySelector('button');
 
 //EVENT LISTENERS   
 calculateBtn.addEventListener('click', taxesCalc); //need to change to savings calc eventually
-calculateBtn.addEventListener('click', loanCalc); 
 
 
-//sets loan type initially to none
-var loanType = document.getElementById("student-loan-list").value;
-//this function changes loan type after 'onchange' event 
-function whichLoan(){
-    loanType = document.getElementById("student-loan-list").value;
-}
-
-function loanCalc(){
-    let income = incomeInp.value;
-
-    if (loanType == 'plan1'){
-        var incLoan =  12*(((income/12)-1657)*0.09);
-        
-    }
-    if (loanType == 'plan2'){
-        var incLoan = 12*(((income/12)-2274)*0.09);
-    }
-    else{
-        var incLoan = 0
-    }
-    console.log(incLoan);
-}
 
 //Fn to find Income Tax paid
 function incTaxFn(a){
@@ -55,6 +32,7 @@ function incTaxFn(a){
         return 0;
     }
 };
+
 //Fn to find National Insurance paid
 function incNiFn(a){
     let b = a/52;
@@ -69,6 +47,28 @@ function incNiFn(a){
     }
 };
 
+//Fns to find Student Loan Contribution
+
+//sets loan type initially to none
+var loanType = document.getElementById("student-loan-list").value;
+
+//this function changes loan type after 'onchange' event 
+function whichLoan(){
+    loanType = document.getElementById("student-loan-list").value;
+}
+
+function loanCalc(a){
+    if (loanType == 'plan1'){
+        return 12*(((a/12)-1657)*0.09);
+    }
+    if (loanType == 'plan2'){
+        return 12*(((a/12)-2274)*0.09);
+    }
+    else{
+        return 0;
+    }
+}
+
 function taxesCalc(){
     
     let age = ageInp.value;
@@ -77,6 +77,7 @@ function taxesCalc(){
     let incTax = incTaxFn(income);
     let incNi = 0;
 
+    let incLoan = loanCalc(income)
     //NI not paid over 65
     if (age>65){
         incNi = 0;
@@ -84,8 +85,8 @@ function taxesCalc(){
     else{
         incNi = incNiFn(income);
     }
-    let afterTax = income - incNi - incTax;
-    //console.log(afterTax);
+    let afterTax = income - incNi - incTax - incLoan;
+    console.log(afterTax);
 
 };
 
