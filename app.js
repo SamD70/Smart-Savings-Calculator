@@ -25,18 +25,17 @@ function whichLoan(){
 }
 
 function loanCalc(){
-    let incLoan = false;
     let income = incomeInp.value;
 
-    if (loanType == document.querySelector('option[value=plan1]')){
-        let incLoan =  true//((income/12)-1657)*0.09;
+    if (loanType == 'plan1'){
+        var incLoan =  12*(((income/12)-1657)*0.09);
+        
     }
     if (loanType == 'plan2'){
-        let incLoan = true //((income/12)-2274)*0.09;
+        var incLoan = 12*(((income/12)-2274)*0.09);
     }
     else{
-        //incLoan = null //((income/12)-2274)*0.09;
-
+        var incLoan = 0
     }
     console.log(incLoan);
 }
@@ -86,7 +85,7 @@ function taxesCalc(){
         incNi = incNiFn(income);
     }
     let afterTax = income - incNi - incTax;
-    console.log(afterTax);
+    //console.log(afterTax);
 
 };
 
