@@ -12,7 +12,7 @@ const calculateBtn = document.querySelector('button');
 
 
 //EVENT LISTENERS   
-calculateBtn.addEventListener('click', taxesCalc); //need to change to savings calc eventually
+calculateBtn.addEventListener('click', savingsCalc); //need to change to savings calc eventually
 
 //Fn to find Income Tax paid
 function incTaxFn(a){
@@ -92,7 +92,32 @@ function taxesCalc(){
         incNi = incNiFn(income);
     }
     let afterTax = income - incNi - incTax - incLoan - incPens;
-    console.log(afterTax);
+    return afterTax
+}
 
-};
+function savingsMessage(savings){
+    if (savings>0){
+        return document.getElementById('savings-message').innerHTML = '<b>CONGRATULATIONS!</b>' + ' <br>Based on our calculations you can expect to save £' + savings + ' per month!';
+    }
+    else if (savings<0){
+        return document.getElementById('savings-message').innerHTML = 'Unfortunately, based on our calculations your expenses exceed your monthly income after tax, therefore can expect to lose £' + Math.abs(savings) + ' per month.';
+    }
+    else{
+        return document.getElementById('savings-message').innerHTML = 'Unfortunately, based on our calculations your monthly savings accumulate to £0';
+    }
+}
+
+function savingsCalc(){
+    let afterTax = taxesCalc();
+    
+    let housing = housingInp.value;
+    let transport = transportInp.value;
+    let fun = funInp.value;
+    let essentials = essentialsInp.value;
+    let other = otherInp.value;
+
+    let savings = (afterTax/12)-transport-housing-fun-essentials-other;
+
+    savingsMessage(savings);
+}
 
