@@ -44,20 +44,20 @@
         
         <div class="taxes">
             <h3>Taxes</h3>
-            <div class="input-wrapper"  id="tax-year">
-                <h5>Tax Year </h5>
-                <input type="number" name="tax-year">
-            </div>
             <div class="input-wrapper" id="age">  
                 <h5>Age </h5>
                 <input type="number" name="age">
             </div>                
             <div class="input-wrapper" id="student-loan"> 
                 <h5>Student Loan Plan </h5> 
-                <input type="number" name="student-loan">
+                <select name="student-loan" id="student-loan-list" onchange="whichLoan();">
+                    <option value="None">None</option>
+                    <option value="plan1">Plan 1 (Started University Pre 2012)</option>
+                    <option value="plan2">Plan 2 (Started University Post 2012)</option>
+                </select>            
             </div>
             <div class="input-wrapper" id="pension">  
-                <h5>Pension Contribution </h5>
+                <h5>Pension Contribution (%)</h5>
                 <input type="number" name="pension">
             </div>
 
