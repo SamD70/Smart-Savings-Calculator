@@ -1,5 +1,4 @@
 const incomeInp = document.querySelector('input[name=income]');
-const taxYearInp = document.querySelector('input[name=tax-year]');
 const ageInp = document.querySelector('input[name=age]');
 const studentLoanInp = document.querySelector('input[name=student-loan]');
 const pensionInp = document.querySelector('input[name=pension]');
@@ -14,8 +13,6 @@ const calculateBtn = document.querySelector('button');
 
 //EVENT LISTENERS   
 calculateBtn.addEventListener('click', taxesCalc); //need to change to savings calc eventually
-
-
 
 //Fn to find Income Tax paid
 function incTaxFn(a){
@@ -56,7 +53,7 @@ var loanType = document.getElementById("student-loan-list").value;
 function whichLoan(){
     loanType = document.getElementById("student-loan-list").value;
 }
-
+//this calculates the contribution paid
 function loanCalc(a){
     if (loanType == 'plan1'){
         return 12*(((a/12)-1657)*0.09);
@@ -69,6 +66,13 @@ function loanCalc(a){
     }
 }
 
+//Fn to find pension contribution
+function pensionCalc(a){
+    let pensionPct = pensionInp.value;
+    return ((pensionPct/100)*a);
+}
+
+
 function taxesCalc(){
     
     let age = ageInp.value;
@@ -77,7 +81,9 @@ function taxesCalc(){
     let incTax = incTaxFn(income);
     let incNi = 0;
 
-    let incLoan = loanCalc(income)
+    let incPens = pensionCalc(income);
+
+    let incLoan = loanCalc(income);
     //NI not paid over 65
     if (age>65){
         incNi = 0;
@@ -85,7 +91,7 @@ function taxesCalc(){
     else{
         incNi = incNiFn(income);
     }
-    let afterTax = income - incNi - incTax - incLoan;
+    let afterTax = income - incNi - incTax - incLoan - incPens;
     console.log(afterTax);
 
 };
