@@ -217,6 +217,19 @@ nav li a:hover{
     width: 90%;
 }
 
+.review-container{
+    width: 60%;
+    margin: auto;
+}
+.review-slider{
+    display: flex;
+    width: 100%;
+}
+
+.review-slider div{
+    width: 800px;
+}
+
 /*footer*/
 
 footer{
