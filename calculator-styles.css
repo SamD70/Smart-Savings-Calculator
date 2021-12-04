@@ -34,7 +34,7 @@ nav{
     align-items: center;
     justify-content: space-between;
     text-align: center;
-
+    position: fixed;
 }
 
 nav ul{
@@ -75,7 +75,9 @@ section {
     align-items: center;
     color: #1F5673;
 }
-
+h1{
+    padding-top: 100px;
+}
 
 .input-wrapper{
     padding: 20px 0px;
@@ -152,4 +154,52 @@ button:hover{
 
 section{
     padding-bottom: 50px;
+}
+
+footer{
+    height: 20vh;
+    width: 100%;
+    background-color: rgb(43, 43, 43);
+}
+
+.footer-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-wrapper li{
+    margin-top: 20px;
+}
+.footer-wrapper a{
+    color: white;
+    text-decoration: none;
+
+}
+
+@media (max-width: 1450px){
+    .taxes{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .expenses{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+@media (max-width: 800px){
+    .logo-wrapper{
+        display: none;
+    }
+    nav{
+        display: flex;
+        justify-content: center;
+    }
 }
