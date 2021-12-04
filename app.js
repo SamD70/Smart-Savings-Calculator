@@ -97,10 +97,10 @@ function taxesCalc(){
 
 function savingsMessage(savings){
     if (savings>0){
-        return document.getElementById('savings-message').innerHTML = '<b>CONGRATULATIONS!</b>' + ' <br>Based on our calculations you can expect to save £' + savings + ' per month!';
+        return document.getElementById('savings-message').innerHTML = '<b>CONGRATULATIONS!</b>' + ' <br>Based on our calculations you can expect to save £' + Math.floor(savings) + ' per month!';
     }
     else if (savings<0){
-        return document.getElementById('savings-message').innerHTML = 'Unfortunately, based on our calculations your expenses exceed your monthly income after tax, therefore can expect to lose £' + Math.abs(savings) + ' per month.';
+        return document.getElementById('savings-message').innerHTML = 'Unfortunately, based on our calculations your expenses exceed your monthly income after tax, therefore can expect to lose £' + Math.abs(Math.floor(savings)) + ' per month.';
     }
     else{
         return document.getElementById('savings-message').innerHTML = 'Unfortunately, based on our calculations your monthly savings accumulate to £0';
@@ -119,5 +119,7 @@ function savingsCalc(){
     let savings = (afterTax/12)-transport-housing-fun-essentials-other;
 
     savingsMessage(savings);
+
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
