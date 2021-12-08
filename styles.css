@@ -36,6 +36,8 @@ nav{
 nav ul{
     display: flex;
     padding-right: 50px;
+    text-align: center;
+
 }
 
 .nav-el a{
@@ -44,6 +46,7 @@ nav ul{
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     transition: color 0.5s ease;
+
 }
 
 .nav-wrapper{
@@ -146,7 +149,7 @@ nav li a:hover{
     padding: 10px 0;
 }
 
-.about-section img{
+#about-section img{
     height: 200px;
     width: 500px;
 }
@@ -242,5 +245,26 @@ footer{
     nav{
         display: flex;
         justify-content: center;
+    }
+    .process-container i{
+        font-size: 3rem;
+    }
+    .process-container h5{
+        font-size: 1.2rem;
+    }
+    .process-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 420px){
+    .title{
+        font-size: 2rem;
+    }
+    .title-wrapper h5{
+        font-size: 1rem;
+    }
+    nav{
+        font-size: 0.8rem;
     }
 }
