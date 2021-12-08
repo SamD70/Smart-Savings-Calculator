@@ -223,6 +223,7 @@ footer{
     input{
         height: 20px;
         width: 200px;
+        font-size: 0.8rem;
     }
     
     select{
